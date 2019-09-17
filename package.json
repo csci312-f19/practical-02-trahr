@@ -1,0 +1,22 @@
+{
+  "name": "practical-02-picker-solution",
+  "version": "1.0.0",
+  "description": "A simple component made in vanilla JS.",
+  "main": "index.html",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "author": "",
+  "contributors": [
+    "Christopher Andrews <candrews@middlebury.edu>",
+    "Michael Linderman <mlinderman@middlebury.edu>"
+  ],
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "jest": "^24.9.0"
+  }
+}
