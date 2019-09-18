@@ -14,8 +14,8 @@
       }
 
       .color-swatch{
-        width:100px; 
-        height:100px; 
+        width:100px;
+        height:100px;
         border:1px solid black;
       }
     </style>
@@ -23,43 +23,32 @@
   <body>
     <div class="color-picker">
       <div class="color-swatch" ></div>
-      <div class="red-slider">
-        <div class="color-label">red:</div>
-        <input type="range" min="0" max="255" id="slider-r" value="0"/>
-        <span id="value-r"></span>
-      </div>
-      <div class="green-slider">
-        <div class="color-label">green:</div>
-        <input type="range" min="0" max="255" id="slider-g" value="0"/>
-        <span id="value-g"></span>
-      </div>
-      <div class="blue-slider">
-        <div class="color-label">blue: </div>
-        <input type="range" min="0" max="255" id="slider-b" value="0"/>
-        <span id="value-b"></span>
-      </div>
+
     </div>
 
     <script type="text/javascript">
       const colorBox = document.querySelector('.color-swatch');
-      const colors = ['r','g','b'];
 
-      const labels = colors.map((color) => {
-        return document.getElementById(`value-${color}`);
-      });
+      const picker = document.querySelector('.color-picker');
+      let currentColor = {'red':255, 'green':0, 'blue': 0};
 
-      const sliders = colors.map((color) => {
-        return document.getElementById(`slider-${color}`);
-      });
+      const update = function(newColor) {
+        currentColor = { ...currentColor, ...newColor }
+        const { red, green, blue } = currentColor;
 
-      const update = function() {
-        colorBox.style.background =
-          `rgb(${sliders[0].value}, ${sliders[1].value}, ${sliders[2].value})`;
-        sliders.forEach((slider, index) => labels[index].innerHTML = slider.value);
+        colorBox.style.background = `rgb(${red}, ${green}, ${blue})`;
       };
 
-      // Set oninput callback for each slider
-      sliders.forEach((slider) => slider.oninput = update);
+
+      Object.keys(currentColor).forEach((color) =>{
+        // initialize slider in here
+        const slider = createSlider(color, currentColor[color], update);
+        picker.appendChild(slider);
+      });
+
+
+
+
       update();
     </script>
 
