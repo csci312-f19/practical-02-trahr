@@ -41,13 +41,12 @@ const createSlider = function createSlider(color, initialValue, callback) {
 
   // set the range input's oninput function to update the readout and call the callback
   range.oninput = () => {
-     readout.innerHTML = range.value;
-     callback({ [color]: parseInt(range.value, 10) });
-   };
+    readout.innerHTML = range.value;
+    callback({ [color]: parseInt(range.value, 10) });
+  };
 
   // return the slider
-  return(slider);
-
+  return (slider);
 };
 
 
@@ -66,7 +65,7 @@ whenever the value of the color changes.
 const createColorPicker = function createColorPicker(initialValue, callback) { // eslint-disable-line no-unused-vars, max-len
   // create a div to hold the picker
   const picker = document.createElement('div');
-  picker.className = 'color-picker'
+  picker.className = 'color-picker';
 
   // create a div with the class 'color-swatch' to provide the colored rectangle
   // and add it to the picker
@@ -84,8 +83,8 @@ const createColorPicker = function createColorPicker(initialValue, callback) { /
   // - set the background color of the swatch
   // - call the callback with the current color
 
-  const update = function(newColor) {
-    currentColor = { ...currentColor, ...newColor }
+  const update = function (newColor) {
+    currentColor = { ...currentColor, ...newColor };
     const { red, green, blue } = currentColor;
 
     colorBox.style.background = `rgb(${red}, ${green}, ${blue})`;
@@ -94,7 +93,7 @@ const createColorPicker = function createColorPicker(initialValue, callback) { /
   };
 
   // add sliders for each color channel
-  Object.keys(currentColor).forEach((color) =>{
+  Object.keys(currentColor).forEach((color) => {
     // initialize slider in here
     const slider = createSlider(color, currentColor[color], update);
     picker.appendChild(slider);
@@ -106,8 +105,7 @@ const createColorPicker = function createColorPicker(initialValue, callback) { /
 
   // return the picker
 
-  return(picker);
-
+  return (picker);
 };
 
 try {
